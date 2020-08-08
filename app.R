@@ -8,13 +8,6 @@ library(shinyjs)
 
 rm(list=ls())
 
-js_code <- "
-shinyjs.browseURL = function(url) {
-  window.open(url,'_blank');
-}
-"
-
-
 #processing biosamples is done separately because the function returns a data frame which needs to be rendered separately
 process_biosamples = function(input){
     id= input$id[1] #get the id input by the user and send a request to ENA
