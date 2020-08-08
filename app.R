@@ -3,8 +3,17 @@ library(XML)
 library(xml2)
 library(tableHTML)
 library(DT)
+library(shinyjs)
+
 
 rm(list=ls())
+
+js_code <- "
+shinyjs.browseURL = function(url) {
+  window.open(url,'_blank');
+}
+"
+
 
 #processing biosamples is done separately because the function returns a data frame which needs to be rendered separately
 process_biosamples = function(input){
@@ -52,13 +61,14 @@ process_biosamples = function(input){
 }
 
 #function to obtain metadata from ENA and ArrayExpress
-process_study = function(input){
+process_study = function(input, xml){
     id= input$id[1]
     request = paste0("https://www.ebi.ac.uk/ena/browser/api/xml/", id)
     res = httr::content(httr::GET(request))
     keywords = c()
     doc = xmlTreeParse(res)
     root_name = xmlName(xmlRoot(doc)[[1]])
+    title = ""
     if (root_name == "PROJECT"){
         title = xml_text(xml_find_all(res, paste0("//", root_name, "/TITLE")))
     } else if (root_name == "STUDY"){
@@ -71,6 +81,16 @@ process_study = function(input){
         abstract = xml_text(xml_find_all(res, "//DESCRIPTION"))
     }
     
+    #populate title and abstract within jats xml
+    title_node = xml2::xml_find_first(xml, "/article/front/article-meta/title-group/article-title")
+    xml2::xml_text(title_node) = title
+    
+    abstract_node = xml2::xml_find_first(xml, "/article/front/article-meta/abstract")
+    xml2::xml_add_child(abstract_node, "p")
+    abstract_node_p = xml2::xml_find_first(xml, "/article/front/article-meta/abstract/p")
+    xml2::xml_text(abstract_node_p) = abstract
+    
+   # xml2::write_xml(xml, file = "new_xml")
     #getting the data resources
     fastq_files = xml_text(xml_find_all(res,"//XREF_LINK/ID[../DB='ENA-FASTQ-FILES']"))
     ena_run_id = xml_text(xml_find_all(res, "//XREF_LINK/ID[../DB='ENA-RUN']"))
@@ -89,9 +109,84 @@ process_study = function(input){
         links = strsplit(link, ";")
         link_1 = links[[1]][1]
         link_2 = links[[1]][2]
+        if (is.na(link_2)){
+            link_2=""
+        }
         data_resource = paste("<h3 style=\"color:DARKCYAN;\">Resource ", r, "</h3>", "<h4 style=\"color:LIGHTSEAGREEN;\">Download URL</h4>", link_1, "\n", link_2,  "<h4 style=\"color:LIGHTSEAGREEN;\">Resource identifier</h4>", identifier, "<h4 style=\"color:LIGHTSEAGREEN;\">Data format</h4>", "FASTQ")
         data_resources = c(data_resources, data_resource) 
+        
+        #add data resources to jats xml
+        dr_node = xml2::xml_find_first(xml, "/article/body/sec[@sec-type='Data resources']")
+        xml2::xml_add_child(dr_node, "sec")
+        new_sec_xpath = paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]")
+        x = xml2::xml_find_first(xml, new_sec_xpath)
+        xml2::xml_add_child(x, "title")
+        title_xpath = paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/title")
+        title_node =xml2::xml_find_first(xml, title_xpath)
+        xml2::xml_text(title_node) = paste0("Resource ", r)
+        xml2::xml_attr(x, "sec-type") = paste0("Resource ", r)
+        #download url(s)
+        xml2::xml_add_child(x, "sec")
+        download_url_xpath = paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/sec")
+        download_url_node = xml2::xml_find_first(xml, download_url_xpath)
+        xml2::xml_attr(download_url_node, "sec-type") = "Download URL"
+        xml2::xml_add_child(download_url_node, "p")
+        download_url_node_p = xml2::xml_find_all(xml, paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/sec[@sec-type='Download URL']/p"))
+        xml2::xml_add_child(download_url_node_p, "ext-link")
+        ext_link_xpath = paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/sec[@sec-type='Download URL']/p/ext-link")
+        ext_link_attrs = c("simple", "uri", link_1)
+        names(ext_link_attrs) = c("xlink:type", "ext-link-type", "xlink:href")
+        ext_link_node = xml2::xml_find_first(xml, ext_link_xpath)
+        xml2::xml_set_attrs(ext_link_node, ext_link_attrs)
+        xml2::xml_text(ext_link_node) = link_1
+        #check if there is a second url (for the reverse reads) and add node
+        if (nchar(link_2) > 0){
+          xml2::xml_add_sibling(ext_link_node, "ext-link")
+          ext_link_xpath_2 = paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/sec[@sec-type='Download URL']/p/ext-link[2]")
+          ext_link_node_2 = xml2::xml_find_first(xml, ext_link_xpath_2)
+          ext_link_attrs_2 = c("simple", "uri", link_2)
+          names(ext_link_attrs_2) = c("xlink:type", "ext-link-type", "xlink:href")
+          xml2::xml_set_attrs(ext_link_node_2, ext_link_attrs_2)
+          xml2::xml_text(ext_link_node_2) = link_2
+        }
+        
+        #title of section
+        xml2::xml_add_sibling(download_url_node_p, "title", .where = "before")
+        download_title_node=xml2::xml_find_all(xml, paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/sec[@sec-type='Download URL']/title"))
+        xml2::xml_text(download_title_node) = "Download URL"
+        
+      #resource identifier
+        xml2::xml_add_child(x, "sec")
+        res_id_xpath = paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/sec[2]")
+        res_id_node= xml2::xml_find_all(xml, res_id_xpath)
+        xml2::xml_attr(res_id_node, "sec-type") = "Resource identifier"
+        xml2::xml_add_child(res_id_node, "p")
+        res_id_node_p =  xml2::xml_find_all(xml, paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/sec[@sec-type='Resource identifier']/p"))
+        xml2::xml_text(res_id_node_p) = identifier
+        
+        #title of section
+        xml2::xml_add_sibling(res_id_node_p, "title", .where = "before") #here we create the title node, before the text of the res node
+        res_text_title = xml2::xml_find_all(xml,  paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/sec[@sec-type='Resource identifier']/p/title"))
+        xml2::xml_text(res_text_title) = "Resource identifier"
+        
+        #data format
+        xml2::xml_add_child(x, "sec")
+        data_format_xpath = paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/sec[3]")
+        data_format_node = xml2::xml_find_all(xml, data_format_xpath)
+        xml2::xml_attr(data_format_node, "sec-type") = "Data format"
+        xml2::xml_add_child(data_format_node, "p")
+        data_format_node_p =  xml2::xml_find_all(xml, paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/sec[@sec-type='Data format']/p"))
+        xml2::xml_text(data_format_node_p) = "FASTQ"
+        
+        #title of section
+        xml2::xml_add_sibling(data_format_node_p, "title", .where = "before") #here we create the title node, before the text of the res node
+        format_text_title = xml2::xml_find_all(xml,  paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/sec[@sec-type='Data format']/title"))
+        xml2::xml_text(format_text_title) = "Data format"
+        
+       
     }
+ 
+    
     dr = paste(data_resources, sep = " ", collapse = "</br>")
     sample_id = xml_text(xml_find_all(res, "//XREF_LINK/ID[../DB='ENA-SAMPLE']"))
     experiment_id =  xml_text(xml_find_all(res, "//XREF_LINK/ID[../DB='ENA-EXPERIMENT']"))
@@ -108,11 +203,13 @@ process_study = function(input){
     sample_ids = parse_multiple_ids(sample_id)
     experiment_ids =  parse_multiple_ids(experiment_id)
     sample_info = c()
+    sample_info_for_xml = c()
+    organism_name = c()
     if (length(sample_ids)>0){
         for (s in 1:length(sample_ids)) {
             request = paste0("https://www.ebi.ac.uk/ena/browser/api/xml/", sample_ids[s])
             sample_res = httr::content(httr::GET(request))
-            organism_name = xml_text(xml_find_all(sample_res,"//SCIENTIFIC_NAME"))
+            organism_name = c(organism_name, xml_text(xml_find_all(sample_res,"//SCIENTIFIC_NAME")))
             keywords = c(keywords, organism_name)
             
             
@@ -132,14 +229,35 @@ process_study = function(input){
                     sample_characteristics = ""
                 }
             })
+            sample_characteristics_for_xml = paste(sample_characteristics, collapse = "\n")
             sample_characteristics = paste(sample_characteristics, collapse = "<br/>")
+            sample_info_for_xml =  c(sample_info_for_xml, paste(organism_name, sample_description, sample_characteristics_for_xml))
             sample_info = c(sample_info, paste("<h4>", organism_name,"</h4", "<br/>", sample_description, "<br/><br/>", sample_characteristics, "<br/>"))
         }
     }
     
+    #add organism name to jats xml
+    taxonomic_node = xml2::xml_find_all(xml, "/article/body/sec[@sec-type='Biodiversity profile']/sec[@sec-type='Taxonomic range']")
+    xml_add_child(taxonomic_node, "list", .where=1)
+    taxonomic_list_node = xml2::xml_find_all(xml, "/article/body/sec[@sec-type='Biodiversity profile']/sec[@sec-type='Taxonomic range']/list")
+    organism_name = unique(organism_name)
+    for (o in 1:length(organism_name)){
+        xml_add_child(taxonomic_list_node, "list-item")
+        taxonomic_list_item_node = xml2::xml_find_all(xml, paste0("/article/body/sec[@sec-type='Biodiversity profile']/sec[@sec-type='Taxonomic range']/list/list-item[", o, "]"))
+        xml2::xml_add_child(taxonomic_list_item_node, "p")
+        taxonomic_list_item_node_p = xml2::xml_find_all(xml, paste0("/article/body/sec[@sec-type='Biodiversity profile']/sec[@sec-type='Taxonomic range']/list/list-item[", o, "]/p"))
+        xml2::xml_text(taxonomic_list_item_node_p) = organism_name
+    }
+    
+   # text_node = xml2::xml_find_all(xml, "/article/body/sec[@sec-type='Biodiversity profile']/sec[@sec-type='Taxonomic range']/text() ")
+    xml2::xml_add_sibling(taxonomic_list_node, "title", .where = "before") #here we create the title node, before the text of the target node
+    taxonomic_title = xml2::xml_find_all(xml, "/article/body/sec[@sec-type='Biodiversity profile']/sec[@sec-type='Taxonomic range']/title")
+    xml2::xml_text(taxonomic_title) = "Taxonomic range"
+    
     #getting experiment (methods) metadata
     experiment_info = c()
     library_strategies = c()
+    
     sequencing_platforms = c()
     if (length(experiment_ids)>0){
         for (s in 1:length(experiment_ids)) {
@@ -153,11 +271,22 @@ process_study = function(input){
             sequencing_platforms = c(sequencing_platforms, sequencing_platform)
         }
         sequencing_platforms = unique(sequencing_platforms)
-        sequencing_platforms = paste(sequencing_platforms, collapse = "</br>")
         library_strategies = unique(library_strategies)
+        library_strategies  = paste(library_strategies, collapse = ", ")
         keywords = c(keywords, sequencing_platforms)
         keywords = c(keywords, library_strategies)
     }
+    sequencing_platforms = paste(sequencing_platforms, collapse = ", ")
+    
+    #setting the target in the xml
+    target_node = xml2::xml_find_all(xml, "/article/body/sec[@sec-type='Biodiversity profile']/sec[@sec-type='Target']")
+    xml2::xml_add_child(target_node, "p")
+    target_node_p=xml2::xml_find_all(xml, "/article/body/sec[@sec-type='Biodiversity profile']/sec[@sec-type='Target']/p")
+    xml2::xml_text(target_node_p) = library_strategies
+    xml2::xml_add_sibling(target_node_p, "title", .where = "before") #here we create the title node, before the text of the target node
+    target_title = xml2::xml_find_all(xml, "/article/body/sec[@sec-type='Biodiversity profile']/sec[@sec-type='Target']/title")
+    xml2::xml_text(target_title) = "Target"
+    
     protocol_ids = sort(protocol_ids)
     protocols = c()
     if (length(protocol_ids>0)){
@@ -190,8 +319,37 @@ process_study = function(input){
     steps = paste(protocols, collapse = "<br/>")
     sample_info = unique(sample_info)
     sample_info = paste(sample_info, collapse = "<br/>")
+    
+    sample_info_for_xml = unique(sample_info_for_xml)
+    sampling_node = xml2::xml_find_all(xml, "/article/body/sec[@sec-type='Methods']/sec[@sec-type='Sampling']")
+    xml_add_child(sampling_node, "list", .where=1)
+    list_node = xml2::xml_find_all(xml, "/article/body/sec[@sec-type='Methods']/sec[@sec-type='Sampling']/list")
+    for (s in 1:length(sample_info_for_xml)){
+        xml_add_child(list_node, "list-item")
+        list_node_item = xml2::xml_find_all(xml, paste0("/article/body/sec[@sec-type='Methods']/sec[@sec-type='Sampling']/list/list-item[", s, "]"))
+        xml2::xml_add_child(list_node_item, "p")
+       # list_node = xml2::xml_find_all(xml, paste0("/article/body/sec[@sec-type='Methods']/sec[@sec-type='Sampling']/list/list-item[", s, "]"))
+       # print(list_node)
+    #    xml2::xml_text(list_node)= sample_info_for_xml[s]
+    }
+    
+    for (l in 1:length(sample_info_for_xml)){
+      list_item = xml2::xml_find_all(xml, paste0("/article/body/sec[@sec-type='Methods']/sec[@sec-type='Sampling']/list/list-item[", l,"]/p"))
+      xml2::xml_text(list_item) = sample_info_for_xml[l]
+    }
+   
     keywords = unique(keywords)
+    
+    kwd_group_node = xml2::xml_find_all(xml, "/article/front/article-meta/kwd-group")
+    for (k in 1:length(keywords)){
+        xml_add_child(kwd_group_node, "kwd")
+        kwd_node = xml2::xml_find_all(xml, paste0("/article/front/article-meta/kwd-group/kwd[", k, "]"))
+        xml2::xml_text(kwd_node) = keywords[k]
+    }
+
     keywords = paste(keywords, collapse = ", ")
+    
+    xml2::write_xml(xml, "new_xml.xml")
     #display html formatted text
     display = c()
     display = paste(paste("<h1 style=\"color:TEAL;\">", title, "</h1>"), "<h2 style=\"color:DARKCYAN;\">Abstract</h2>", abstract, "<h2 style=\"color:DARKCYAN;\">Keywords</h2>", keywords, sep="<br/>")
@@ -264,20 +422,37 @@ parse_consecutive_ids = function(id){
 
 #generate the reactive shiny app 
 ui = fluidPage(
+  #useShinyjs(),
+  #extendShinyjs(text = js_code, functions = 'browseURL'),
+    h4("Omics Data Extractor"),
+    h5("The app converts ENA metadata into omics data paper manuscript. It is a demonstration of the workflow for automatic import of ENA metadata into Omics Data Paper manuscript developed by Pensoft. The functionality of this R shiny app has been implemented inside the Arpha Writing Tool. The code behind this R shiny app is licensed with Apache 2.0 license and can be used by anyone with the right attribution. In addition to emulating the functionality of the workflow in Arpha, the application generates a JATS XML, containing the metadata imported from ENA structured as a journal article"),
     fluidRow(
-        column(12,
+        column(7,
                textInput(inputId = "id", label = "Enter ENA Study accession number", value =  "PRJDB2900", width = 600),
-               htmlOutput(outputId  = "out"), padding = 2000
-        )),
-    fluidRow(
-        column(12,
-               DTOutput(outputId = "table"), padding = 2000
-        )
-    ))
+               padding = 2000, style="margin-top: 30px"
+        ),
+        column(2,
+               actionButton("go", "Convert", style = "margin-top: 40px"),
+               downloadButton("downloadData", "Download XML")
+               ),
+       column(12,
+              htmlOutput(outputId  = "out")),
+  
+         column(12,
+               DTOutput(outputId = "table")
+       )
+    )
+       
+)
 
 server = function(input, output){
+    
+    xml = xml2::read_xml("jats-skeleton.xml")
+    
+    observeEvent(input$go, {
+    
     display = reactive({
-        process_study(input)
+        process_study(input, xml)
     })
     table = reactive({
         process_biosamples(input)
@@ -285,7 +460,16 @@ server = function(input, output){
     output$out <- renderUI({HTML(display())})
     output$table <-  DT::renderDataTable({table()})
     
+    })
+    
+  
+        
+    output$downloadData = downloadHandler(
+      filename = "omics_data_paper_jats.xml",
+      content = function(file) {
+        write_xml(read_xml("new_xml.xml"), file)
+      }
+    )
     
 }
 shinyApp(ui=ui, server = server)
-
