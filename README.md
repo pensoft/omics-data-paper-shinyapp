@@ -1,4 +1,5 @@
-# omics-data-paper
+# Omics Data Paper Generator
+
 This repository contains all code used to create the Omics data paper R shiny app: https://mdmtrv.shinyapps.io/Omics_data_paper/
 
 The Omics Data Paper Generator app emulates the functionality of the automatic workflow for streamlined import of ENA metadata into manuscript integrated inside Pensoft's ARPHA Writing Tool.
