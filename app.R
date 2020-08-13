@@ -4,7 +4,7 @@ library(xml2)
 library(tableHTML)
 library(DT)
 library(shinyjs)
-
+library(shinyWidgets)
 
 rm(list=ls())
 
@@ -47,6 +47,8 @@ process_biosamples = function(input){
         
         biosamples_df = data.frame(mixs_field, value, biosample_ids) #creating the data frame
         colnames(biosamples_df) = biosamples_colnames
+        write.csv(biosamples_df, file = "biosamples_mixs_checklist.csv", row.names = FALSE)
+        
     }else{
         biosamples_df = NULL
     }
@@ -83,7 +85,6 @@ process_study = function(input, xml){
     abstract_node_p = xml2::xml_find_first(xml, "/article/front/article-meta/abstract/p")
     xml2::xml_text(abstract_node_p) = abstract
     
-   # xml2::write_xml(xml, file = "new_xml")
     #getting the data resources
     fastq_files = xml_text(xml_find_all(res,"//XREF_LINK/ID[../DB='ENA-FASTQ-FILES']"))
     ena_run_id = xml_text(xml_find_all(res, "//XREF_LINK/ID[../DB='ENA-RUN']"))
@@ -175,8 +176,6 @@ process_study = function(input, xml){
         xml2::xml_add_sibling(data_format_node_p, "title", .where = "before") #here we create the title node, before the text of the res node
         format_text_title = xml2::xml_find_all(xml,  paste0("/article/body/sec[@sec-type='Data resources']/sec[", r, "]/sec[@sec-type='Data format']/title"))
         xml2::xml_text(format_text_title) = "Data format"
-        
-       
     }
  
     
@@ -204,13 +203,10 @@ process_study = function(input, xml){
             sample_res = httr::content(httr::GET(request))
             organism_name = c(organism_name, xml_text(xml_find_all(sample_res,"//SCIENTIFIC_NAME")))
             keywords = c(keywords, organism_name)
-            
-            
             sample_description = xml_text(xml_find_all(sample_res,"//SAMPLE/DESCRIPTION"))
             if (is.null(sample_description))
                 sample_description = ""
             sample_atts =  xml_find_all(sample_res,"//SAMPLE/SAMPLE_ATTRIBUTES/SAMPLE_ATTRIBUTE")
-            
             sample_characteristics = ""
             sample_characteristics = sapply(sample_atts, function(n){
                 
@@ -312,7 +308,6 @@ process_study = function(input, xml){
     steps = paste(protocols, collapse = "<br/>")
     sample_info = unique(sample_info)
     sample_info = paste(sample_info, collapse = "<br/>")
-    
     sample_info_for_xml = unique(sample_info_for_xml)
     sampling_node = xml2::xml_find_all(xml, "/article/body/sec[@sec-type='Methods']/sec[@sec-type='Sampling']")
     xml_add_child(sampling_node, "list", .where=1)
@@ -321,9 +316,6 @@ process_study = function(input, xml){
         xml_add_child(list_node, "list-item")
         list_node_item = xml2::xml_find_all(xml, paste0("/article/body/sec[@sec-type='Methods']/sec[@sec-type='Sampling']/list/list-item[", s, "]"))
         xml2::xml_add_child(list_node_item, "p")
-       # list_node = xml2::xml_find_all(xml, paste0("/article/body/sec[@sec-type='Methods']/sec[@sec-type='Sampling']/list/list-item[", s, "]"))
-       # print(list_node)
-    #    xml2::xml_text(list_node)= sample_info_for_xml[s]
     }
     
     for (l in 1:length(sample_info_for_xml)){
@@ -342,7 +334,7 @@ process_study = function(input, xml){
 
     keywords = paste(keywords, collapse = ", ")
     
-    xml2::write_xml(xml, "new_xml.xml")
+    xml2::write_xml(xml, "omics_data_paper_jats.xml")
     #display html formatted text
     display = c()
     display = paste(paste("<h1 style=\"color:TEAL;\">", title, "</h1>"), "<h2 style=\"color:DARKCYAN;\">Abstract</h2>", abstract, "<h2 style=\"color:DARKCYAN;\">Keywords</h2>", keywords, sep="<br/>")
@@ -354,6 +346,13 @@ process_study = function(input, xml){
     display = paste(display, "<h2 style=\"color:DARKCYAN;\">Data Resources</h2>", dr,  sep = "<br/>")
     display = paste(display, "<h2 style=\"color:DARKCYAN;\">Data statistics</h2>", "", "<h2 style=\"color:DARKCYAN;\">Caveats and limitations</h2>", "", "<h2 style=\"color:DARKCYAN;\">Usage rights</h2>", sep = "<br/>")
     display = paste(display, "<h2 style=\"color:DARKCYAN;\">Supplementary material</h2>", " ", "<h3 style=\"color:DARKCYAN;\">Suppl. material 1: BioSamples MIxS checklists</h3>", " ", "<h4 style=\"color:LIGHTSEAGREEN;\">Data type: sample metadata</h4>", " ", "<h4 style=\"color:LIGHTSEAGREEN;\">Filename: biosamples_mixs_checklist.csv</h4>", " ")
+    display_html = paste(as.character(display), collapse = "\n")
+    
+    write.table(display_html, 
+                file="omics_data_paper.html", 
+                quote = FALSE,
+                col.names = FALSE,
+                row.names = FALSE)
     return(display)
 }
 
@@ -415,54 +414,119 @@ parse_consecutive_ids = function(id){
 
 #generate the reactive shiny app 
 ui = fluidPage(
-  #useShinyjs(),
-  #extendShinyjs(text = js_code, functions = 'browseURL'),
-    h4("Omics Data Extractor"),
-    h5("The app converts ENA metadata into omics data paper manuscript. It is a demonstration of the workflow for automatic import of ENA metadata into Omics Data Paper manuscript developed by Pensoft. The functionality of this R shiny app has been implemented inside the Arpha Writing Tool. The code behind this R shiny app is licensed with Apache 2.0 license and can be used by anyone with the right attribution. In addition to emulating the functionality of the workflow in Arpha, the application generates a JATS XML, containing the metadata imported from ENA structured as a journal article"),
-    fluidRow(
-        column(7,
+  shinyjs::useShinyjs(),
+  tags$head(tags$style(" .headerRow{background-color: #033F63;color:white;}")),
+  tags$head(tags$style(" .bodyRow{background-color: #f7f9f9;color:#313638;margin-top:15px;}")),
+  tags$head(tags$style(" .progress-bar{background-color:#033F63;}")),
+  
+  fluidRow(class="headerRow",
+    h1("Omics Data Paper Generator", style="margin-left: 15px"),
+    h4("The application demonstrates the automatic import of ENA metadata into Omics Data Paper manuscript, implemented as a workflow in Pensoft's", a(href="https://arpha.pensoft.net/", "ARPHA Writing Tool"),". The code behind this R shiny app is ", a(href="https://github.com/pensoft/omics-data-paper-shinyapp", "available on GitHub"), "under Apache 2.0 license and can be used and modified by anyone with the right attribution.",
+       style="margin-left: 15px; margin-right:40px; text-align: justify;"),
+    h4("You can read more about the project in ", a(href="https://blog.pensoft.net/2020/06/16/streamlined-import-of-omics-metadata-from-the-european-nucleotide-archive-ena-into-an-omics-data-paper-manuscript/", "this blogpost."),
+       style="margin-left: 15px; margin-right:40px; text-align: justify;")
+    ),
+   
+    
+    fluidRow(class="bodyRow",
+        column(4,
                textInput(inputId = "id", label = "Enter ENA Study accession number", value =  "PRJDB2900", width = 600),
-               padding = 2000, style="margin-top: 30px"
+               padding = 2000,
         ),
-        column(2,
-               actionButton("go", "Convert", style = "margin-top: 40px"),
-               downloadButton("downloadData", "Download XML")
+        column(8,
+               actionButton("go", "Convert", style="margin-top:20px;"),
+               
                ),
+        conditionalPanel(
+          condition=("input.go == 1"),
+          column(12,
+          downloadButton("downloadData", "Download XML"),
+          downloadButton("downloadHTML", "Download HTML"),
+          downloadButton("downloadSuppl", "Download Supplementary Material")
+          ))
+        
+        ,
        column(12,
-              htmlOutput(outputId  = "out")),
+              htmlOutput(outputId  = "out"), style="width:1200px;margin-right:20px;margin-left:40px;margin-top:10px"),
   
          column(12,
-               DTOutput(outputId = "table")
+               DTOutput(outputId = "table"), style="margin-top:10px"
        )
-    )
-       
+    ),
+    progressBar(id = "pb1", value = 0),
+  h5("This research has received funding from the European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No 764840 as part of the International Training Network (ITN) IGNITE.", style="margin-left: 15px"),
 )
 
-server = function(input, output){
+
+server = function(input, output, session){
     
-    xml = xml2::read_xml("jats-skeleton.xml")
+  xml = xml2::read_xml("jats-skeleton.xml")
     
-    observeEvent(input$go, {
-    
+   
+   observeEvent(input$go, {
+     updateProgressBar(
+       session = session,
+       id = "pb1",
+       value = 20
+       )
+     shinyjs::disable("downloadData")
+     shinyjs::disable("downloadSuppl")
+     shinyjs::disable("downloadHTML")
+     
     display = reactive({
-        process_study(input, xml)
+        display = process_study(input, xml)
     })
-    table = reactive({
-        process_biosamples(input)
-    })
+   
+   
     output$out <- renderUI({HTML(display())})
+    if (nchar(display())>1){
+      shinyjs::enable("downloadData")
+      shinyjs::enable("downloadHTML")
+      
+    }
+    updateProgressBar(
+      session = session,
+      id = "pb1",
+      value = 50
+    )
+    table = reactive({
+      process_biosamples(input)
+    })
+    
     output$table <-  DT::renderDataTable({table()})
     
+    if (nrow(table())>1){
+      shinyjs::enable("downloadSuppl")
+      updateProgressBar(
+        session = session,
+        id = "pb1",
+        value = 100
+      )
+    }
     })
-    
   
-        
     output$downloadData = downloadHandler(
       filename = "omics_data_paper_jats.xml",
       content = function(file) {
-        write_xml(read_xml("new_xml.xml"), file)
+        write_xml(read_xml("omics_data_paper_jats.xml"), file)
       }
     )
     
+    output$downloadSuppl = downloadHandler(
+      filename = "biosamples_mixs_checklist.csv",
+      content = function(file) {
+        write.csv(read.csv("biosamples_mixs_checklist.csv"), file, row.names = FALSE)
+      }
+    )
+    
+    output$downloadHTML = downloadHandler(
+      filename = "omics_data_paper.html",
+      content = function(file) {
+        write_html(read_html("omics_data_paper.html"), file)
+      }
+    )
 }
+
+
+
 shinyApp(ui=ui, server = server)
