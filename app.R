@@ -1,3 +1,9 @@
+#installing dependencies (source Shane from https://stackoverflow.com/questions/4090169/elegant-way-to-check-for-missing-packages-and-install-them)
+list.of.packages <- c("shiny", "XML", "xml2", "tableHTML", "DT", "shinyjs", "shinyWidgets" )
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
+#loading packages
 library(shiny)
 library(XML)
 library(xml2)
@@ -454,7 +460,7 @@ ui = fluidPage(
        )
     ),
     progressBar(id = "pb1", value = 0),
-  h5("This research has received funding from the European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No 764840 as part of the International Training Network (ITN) IGNITE.", style="margin-left: 15px"),
+  h5("This research has received funding from the European Unionâs Horizon 2020 research and innovation programme under the Marie SkÅodowska-Curie grant agreement No 764840 as part of the International Training Network (ITN) IGNITE.", style="margin-left: 15px"),
 )
 
 
