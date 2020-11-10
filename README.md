@@ -9,8 +9,8 @@ The Omics Data Paper Generator app emulates the functionality of the automatic w
 - RStudio Desktop 1.3.1093
 
 ## Instructions for running the application locally
-1. Clone this repository with git clone https://github.com/pensoft/omics-data-paper-shinyapp.git.
-2. Open app.R with RStudio and click 'Run app' to run the shiny application in a separate window or your browser.  
+1. Clone this repository with `git clone https://github.com/pensoft/omics-data-paper-shinyapp.git`.
+2. Open `app.R` with RStudio and click 'Run app' to run the shiny application in a separate window or your browser.  
 3. In the User Interface of the app, enter a Study or Project ID from the European Nucleotide Archive (ENA) into the text field. You can also try running the app with the identifier we have preloaded.
 4. Click the "Convert" button and the process of metadata retrieval and import will begin.
 5. Once the metadata has been imported into the omics data paper manuscript template, you can download the results as HTML or as JATS XML by clicking the relevant buttons.
