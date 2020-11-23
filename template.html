@@ -1,0 +1,1126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0045)https://arpha.pensoft.net/examples.php?id=113 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+				
+				<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+				<title>ARPHA Writing Tool</title>
+				<meta name="description" content="">
+				<meta name="keywords" content="">
+				<meta name="distribution" content="global">
+				<meta name="robots" content="index, follow, all">
+				<link rel="shortcut icon" href="https://arpha.pensoft.net/favicon.ico">
+				<meta name="application-name" content="ARPHA Writing Tool">
+				<meta name="description" content="Online, collaborative, article-authoring tool">
+				<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8">
+				<link type="text/css" rel="stylesheet" href="./template_files/bootstrap-tour-standalone.min.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/global.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/def.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/layout.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/ui.dynatree.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/editor_rewrite.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/article_preview.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/editable_preview.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/comments.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/comments-cke.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/layout-default-latest.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/jquery-ui.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/perfect-scrollbar.css" media="all" title="default">
+				<link type="text/css" rel="stylesheet" href="./template_files/flexboxgrid.min.css" media="all" title="default">
+				
+				
+		<script type="text/javascript" async="" src="./template_files/ga.js.download"></script><script type="text/javascript" src="./template_files/underscore.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery_ui.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery.tinyscrollbar.min.js.download"></script>
+		<script type="text/javascript" src="./template_files/perfect-scrollbar.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery.collapse.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery.dynatree.min.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery.cookie.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery.simplemodal.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery_form.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery.tokeninput.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery.dragsort.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery.ba-resize.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery.youtubepopup.min.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery.layout-latest.js.download"></script>
+		<script type="text/javascript" src="./template_files/jquery.blockUI.js.download"></script>
+		<script type="text/javascript" src="./template_files/spin.js.download"></script><style type="text/css"></style>
+		<script type="text/javascript" src="./template_files/jquery.spin.js.download"></script>
+	
+				<script type="text/javascript" src="./template_files/perfect-scrollbar.js.download"></script>
+				<script type="text/javascript" src="./template_files/ajaxupload.3.5.js.download"></script>
+				<script type="text/javascript" src="./template_files/tour.js.download"></script>
+				<script type="text/javascript" src="./template_files/def.js.download"></script>
+				<script type="text/javascript" src="./template_files/refinder.js.download"></script>
+				<script type="text/javascript" src="./template_files/changes_common.js.download"></script>
+				<script type="text/javascript" src="./template_files/popup.js.download"></script>
+				<script type="text/javascript" src="./template_files/taskspopup.js.download"></script>
+				<script type="text/javascript" src="./template_files/figures.js.download"></script>
+				<script type="text/javascript" src="./template_files/editable_preview.js.download"></script>
+				<script type="text/javascript" src="./template_files/jquery.collapse.js.download"></script>
+				<script type="text/javascript" src="./template_files/bowser.js.download"></script>
+				<script type="text/javascript" src="./template_files/global.js.download"></script>
+				
+				
+				<script type="text/javascript" src="./template_files/rangy-core.js.download"></script>
+				<script type="text/javascript" src="./template_files/rangy-classapplier.js.download"></script>
+				<script type="text/javascript" src="./template_files/rangy-textrange.js.download"></script>
+				<script type="text/javascript" src="./template_files/rangy-selectionsaverestore.js.download"></script>
+	
+				<script type="text/javascript" src="./template_files/lite-interface.js.download"></script>
+				<script type="text/javascript" src="./template_files/ckeditor.js.download"></script><style>.cke{visibility:hidden;}</style>
+				<script type="text/javascript">CKEDITOR.timestamp = +new Date;</script>
+				<script type="text/javascript" src="./template_files/jquery.js(1).download"></script>
+				<script type="text/javascript" src="./template_files/lite-interface.js.download"></script>
+				
+				
+		<link href="./template_files/css" rel="stylesheet" type="text/css">
+	
+				<script type="text/javascript">
+					$(window).load(function(){
+						gBrowserSession = bowser;
+						if(1 != 1 && 1 == 1) {
+							SetBrowserSession(gBrowserSession);
+						}
+						if(0 == 1 && 1 == 1) {
+							LayerGeneralPopUp('get_terms_agreement_popup');
+						}
+						gWindowIsLoaded = true;
+						loadLazyImages();
+					});
+				</script>
+			<script type="text/javascript" src="./template_files/config.js.download"></script><link rel="stylesheet" type="text/css" href="./template_files/editor.css"><script type="text/javascript" src="./template_files/en.js.download"></script><script type="text/javascript" src="./template_files/styles.js.download"></script><script type="text/javascript" src="./template_files/plugin.js.download"></script><script type="text/javascript" src="./template_files/plugin.js(1).download"></script><script type="text/javascript" src="./template_files/plugin.js(2).download"></script><script type="text/javascript" src="./template_files/plugin.js(3).download"></script><script type="text/javascript" src="./template_files/plugin.js(4).download"></script><script type="text/javascript" src="./template_files/plugin.js(5).download"></script><script type="text/javascript" src="./template_files/plugin.js(6).download"></script><script type="text/javascript" src="./template_files/plugin.js(7).download"></script><script type="text/javascript" src="./template_files/plugin.js(8).download"></script><script type="text/javascript" src="./template_files/plugin.js(9).download"></script><script type="text/javascript" src="./template_files/plugin.js(10).download"></script><link rel="stylesheet" type="text/css" href="./template_files/scayt.css"><link rel="stylesheet" type="text/css" href="./template_files/dialog.css"><link rel="stylesheet" type="text/css" href="./template_files/tableselection.css"><script type="text/javascript" src="./template_files/en.js(1).download"></script><script type="text/javascript" src="./template_files/en.js(2).download"></script><script type="text/javascript" src="./template_files/en.js(3).download"></script><script type="text/javascript" src="./template_files/en.js(4).download"></script><script type="text/javascript" src="./template_files/en.js(5).download"></script><script type="text/javascript" src="./template_files/en.js(6).download"></script></head>
+			<body onload="resizeMiddleContainer()">
+			
+	
+			<script type="text/javascript" src="./template_files/html2canvas.js.download"></script>
+			<div class="example_page_holder">
+				<div id="P-Example-Template-Content">
+					<div id="P-Example-Template-Description">
+						<div class="example_description_title">OMIC Data Paper  </div>
+						
+					</div>
+					<div id="P-Example-Preview-Template" style="position: relative; top: 93px;">
+						<div class="P-Wrapper-Container-Left">
+							
+						
+		<div class="P-Small-Example-Previews-Content" style="display: none; height: 5056px;">
+			
+	
+		</div>
+	
+						<div class="P-Article-Structures" style="top: 93px; height: 602px;">
+							<div class="P-Article-StructureHead">OMICS DATA PAPER TEMPLATE</div>
+								<div class="nav-list">
+									<ul>
+
+
+	
+                        <li>
+							<div class="P-Article-Holder">
+								<div class="P-Down-Arrow"></div>
+								<a href="https://arpha.pensoft.net/examples.php?id=113#1">Article metadata</a>
+							</div>
+							<div class="children-list">
+								<ul>
+									
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#2">Title</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#3">Abstract</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#4">Keywords</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#5">Funder</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#6">Funding program</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#7">Grant title</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#8">Hosting institution</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#9">Ethics and security</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#10">Author contributions</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#11">Conflicts of interest</a>
+							</div>
+                        </li>
+	
+								</ul>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="P-Article-Holder">
+								<div class="P-Down-Arrow"></div>
+								<a href="https://arpha.pensoft.net/examples.php?id=113#12">Add section</a>
+							</div>
+							<div class="children-list">
+								<ul>
+									
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#13">Subsection</a>
+							</div>
+                        </li>
+	
+								</ul>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="P-Article-Holder">
+								<div class="P-Down-Arrow"></div>
+								<a href="https://arpha.pensoft.net/examples.php?id=113#14">Introduction</a>
+							</div>
+							<div class="children-list">
+								<ul>
+									
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#15">Value of the dataset</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#16">Subsection</a>
+							</div>
+                        </li>
+	
+								</ul>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="P-Article-Holder">
+								<div class="P-Down-Arrow"></div>
+								<a href="https://arpha.pensoft.net/examples.php?id=113#17">Methods</a>
+							</div>
+							<div class="children-list">
+								<ul>
+									
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#18">Sampling</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#19">Sample processing</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#20">Data processing</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#21">Subsection</a>
+							</div>
+                        </li>
+	
+								</ul>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="P-Article-Holder">
+								<div class="P-Down-Arrow"></div>
+								<a href="https://arpha.pensoft.net/examples.php?id=113#22">Biodiversity scope</a>
+							</div>
+							<div class="children-list">
+								<ul>
+									
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#23">Target</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#24">Taxonomic range</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#25">Functional range</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#26">Traits</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#27">Subsection</a>
+							</div>
+                        </li>
+	
+								</ul>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="P-Article-Holder">
+								<div class="P-Down-Arrow"></div>
+								<a href="https://arpha.pensoft.net/examples.php?id=113#28">Data Statistics</a>
+							</div>
+							<div class="children-list">
+								<ul>
+									
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#29">Subsection</a>
+							</div>
+                        </li>
+	
+								</ul>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="P-Article-Holder">
+								<div class="P-Down-Arrow"></div>
+								<a href="https://arpha.pensoft.net/examples.php?id=113#30">Caveats and Limitations</a>
+							</div>
+							<div class="children-list">
+								<ul>
+									
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#31">Subsection</a>
+							</div>
+                        </li>
+	
+								</ul>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="P-Article-Holder">
+								<div class="P-Down-Arrow"></div>
+								<a href="https://arpha.pensoft.net/examples.php?id=113#32">Usage Rights</a>
+							</div>
+							<div class="children-list">
+								<ul>
+									
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#33">Subsection</a>
+							</div>
+                        </li>
+	
+								</ul>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="P-Article-Holder">
+								<div class="P-Down-Arrow"></div>
+								<a href="https://arpha.pensoft.net/examples.php?id=113#34">Data Resources</a>
+							</div>
+							<div class="children-list">
+								<ul>
+									
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#35">Resource</a>
+							</div>
+                        </li>
+	
+								</ul>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="P-Article-Holder">
+								<div class="P-Down-Arrow"></div>
+								<a href="https://arpha.pensoft.net/examples.php?id=113#36">Add section</a>
+							</div>
+							<div class="children-list">
+								<ul>
+									
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#37">Subsection</a>
+							</div>
+                        </li>
+	
+								</ul>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class=" P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#38">Acknowledgements</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="nav-references P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#39">References</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="nav-supplementary P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#40">Supplementary files</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="P-Article-Figures P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#41">Figures</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="P-Article-Tables P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#42">Tables</a>
+							</div>
+                        </li>
+	
+                        <li>
+							<div class="P-Article-Endnotes P-Article-Holder">
+								<a href="https://arpha.pensoft.net/examples.php?id=113#43">Endnotes</a>
+							</div>
+                        </li>
+	
+	
+									</ul>
+								</div>
+                        </div>
+	
+						</div><!-- End P-Wrapper-Container-Left -->
+						<div class="P-Wrapper-Container-Middle" style="margin: 0 10px 0 240px">
+							
+            <div id="previewHolder" class="example_preview_holder example_top">
+                <div class="P-Article-Preview">
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                      <colgroup>
+                        <col width="90%">
+                        <col width="10%">
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                            <td>
+                                <div class="P-Article-Preview-Antet">Journal : OMICS DATA PAPER TEMPLATE</div>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="example_template_info">
+                            TODO: Additional information about the template
+                    </div>
+        
+                <div>
+                      <div class="example_top">
+                            <div>
+                              <div><h1 class="example_template_title">OMICS DATA PAPER TEMPLATE</h1></div>
+                            </div>
+                            <div class="P-Article-Preview-Names unselectable">
+                              <span><span field_id="6">First Author</span></span>
+                              <sup class="P-Current-Author-Addresses">
+                                <span class="P-Current-Author-Single-Address">‡</span>
+                              </sup>
+                            </div>
+                            <div class="P-Article-Preview-Addresses unselectable">
+                              <div class="P-Single-Author-Address">‡ Affiliation, City, Country</div>
+                            </div>
+                            <div class="P-Article-Preview-Base-Info-Block">
+                              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <div class="P-Article-Info-Block-Row">Corresponding author: <span instance_id="2082651"><span field_id="6">First Author (<a field_id="4" href="mailto:preprint@pensoft.net?subject=Your%20manuscript%20in%20PWT%20%234754">corresponding@author.email</a>)</span></span></div>
+                                      
+                                      <div class="P-Article-Info-Block-Row copyright">© 2015 <span instance_id="2082651"><span field_id="6">First Author</span></span>.<br></div>
+                                      <div class="P-Article-Info-Block-Row" id="citation">Citation: <span> Author F (2015) Article Title. Journal Title volume: pages. <span style="white-space: nowrap">doi: <a target="_blank" href="https://doi.org/">doi_number</a></span></span></div>
+                                    </td>
+                                    <td id="openaccesstd" width="95px" valign="middle" align="right">
+                                      <img src="./template_files/open_access_icon_colour.svg" alt="Open Access">
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                      </div>
+                </div>
+	
+		<div class="example_template_block">
+			<a class="examples_anchor" id="302"></a><h1 class="example_template_title etth1">Abstract</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+		<div class="example_template_block">
+			<a class="examples_anchor" id="303"></a><h1 class="example_template_title etth1">Keywords</h1><p>Curabitur, mauris, blandit, dapibus</p>
+        </div>
+	
+							
+		<a class="examples_anchor" id="12"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Add section</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+			<div class="example_template_childblock">
+				
+		<a class="examples_anchor" id="13"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Subsection</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+			</div>
+        </div>
+	
+		<a class="examples_anchor" id="14"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Introduction</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+			<div class="example_template_childblock">
+				
+		<a class="examples_anchor" id="15"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Value of the dataset</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+		<a class="examples_anchor" id="16"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Subsection</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+			</div>
+        </div>
+	
+		<a class="examples_anchor" id="17"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Methods</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+			<div class="example_template_childblock">
+				
+		<a class="examples_anchor" id="18"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Sampling</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+		<a class="examples_anchor" id="19"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Sample processing</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+		<a class="examples_anchor" id="20"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Data processing</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+		<a class="examples_anchor" id="21"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Subsection</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+			</div>
+        </div>
+	
+		<a class="examples_anchor" id="22"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Biodiversity scope</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+			<div class="example_template_childblock">
+				
+		<a class="examples_anchor" id="23"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Target</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+		<a class="examples_anchor" id="24"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Taxonomic range</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+		<a class="examples_anchor" id="25"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Functional range</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+		<a class="examples_anchor" id="26"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Traits</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+		<a class="examples_anchor" id="27"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Subsection</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+			</div>
+        </div>
+	
+		<a class="examples_anchor" id="28"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Data Statistics</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+			<div class="example_template_childblock">
+				
+		<a class="examples_anchor" id="29"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Subsection</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+			</div>
+        </div>
+	
+		<a class="examples_anchor" id="30"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Caveats and Limitations</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+			<div class="example_template_childblock">
+				
+		<a class="examples_anchor" id="31"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Subsection</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+			</div>
+        </div>
+	
+		<a class="examples_anchor" id="32"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Usage Rights</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+			<div class="example_template_childblock">
+				
+		<a class="examples_anchor" id="33"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Subsection</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+			</div>
+        </div>
+	
+		<a class="examples_anchor" id="34"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Data Resources</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+			<div class="example_template_childblock">
+				
+		<a class="examples_anchor" id="35"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Resource</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+			</div>
+        </div>
+	
+		<a class="examples_anchor" id="36"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Add section</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+			<div class="example_template_childblock">
+				
+		<a class="examples_anchor" id="37"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Subsection</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+			</div>
+        </div>
+	
+		<a class="examples_anchor" id="38"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Acknowledgements</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+		<a class="examples_anchor" id="43"></a>
+        <div class="example_template_block">
+			<h1 class="example_template_title etth1">Endnotes</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel dolor tincidunt, fermentum velit a, luctus est. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Morbi dolor nibh, ultricies sit amet nisl quis, suscipit porttitor lacus. Curabitur eu mauris ac mauris blandit dapibus. Cras vitae arcu nec lectus volutpat consectetur. Integer condimentum eget libero nec ultrices.</p>
+        </div>
+	
+        <div class="example_template_block">
+            <h1 class="example_template_title etth1">References</h1>
+            <ul>
+                <li>
+                    <p style="text-align: left;">Smith V, Georgiev T, Stoev P, Biserkov J, Miller J, Livermore L, Baker E, Mietchen D, Couvreur T, Mueller G, Dikow T, Helgen K, Frank J, Agosti D, Roberts D, Penev L (2013) Beyond dead trees: integrating the scientific process in the Biodiversity Data Journal. Biodiversity Data Journal 1: e995. doi: <a href="https://doi.org/10.3897/BDJ.1.e995" target="_blank">10.3897/BDJ.1.e995</a></p>
+                </li>
+                <li>
+                    <p style="text-align: left;">Roettger S, Schulz M, Bartelheimer W, Ertl T (2001) Automotive Soiling Simulation Based On Massive Particle Tracing. The Eurographics Association 3: 125. DOI: <a href="https://doi.org/10.2312/VISSYM/VISSYM01/309-318" target="_blank">10.2312/VISSYM/VISSYM01/309-318</a></p>
+                </li>
+            </ul>
+        </div>
+	
+                    </div>
+                </div>
+    
+							
+						</div><!-- End P-Wrapper-Container-Middle -->
+					</div>
+					<script type="text/javascript">
+						$(document).ready(function () {
+							var descH = $("#P-Example-Template-Description").outerHeight();
+							$("#P-Example-Preview-Template").css("top", descH + "px");
+							$(".P-Article-Structures").css("top", descH + "px");
+							$(".P-Article-Structures").css("height", "100%").css("height", "-=" + descH + "px");
+							$(".P-Small-Example-Previews-Content").css("height", "100%").css("height", "-=" + descH + "px");
+							
+						});
+						$(window).resize(function() {
+							var descH = $("#P-Example-Template-Description").outerHeight();
+							$(".P-Article-Structures").css("height", "100%").css("height", "-=" + descH + "px");
+							$(".P-Small-Example-Previews-Content").css("height", "100%").css("height", "-=" + descH + "px");
+						});
+					</script>
+				</div>
+			</div>
+		
+					 <!-- End P-Wrapper-Container -->
+				<div id="P-Ajax-Loading-Image" style="display: none;">
+					<img src="./template_files/loading.gif" alt="">
+				</div>
+			
+				
+		<div style="display: none;" class="P-PopUp" id="tips-and-tricks">
+			<div class="P-PopUp-Main-Holder"></div>
+		</div>
+	
+				
+		<div style="display: none;" class="P-PopUp" id="import-ena">
+								<div id="popup-content">
+								<div class="P-PopUp-Main-Holder"></div>
+								</div>
+		</div>
+	
+				
+		
+			<div style="display:none;" class="P-PopUp" id="feedback">
+				<div class="P-PopUp-Main-Holder"></div>
+			</div>
+	
+				
+		<div style="display: none;" class="P-PopUp P-Email-PopUp" id="compose-new-message">
+			<div class="P-PopUp-Main-Holder">
+				<div class="P-PopUp-Content">
+					<div class="P-PopUp-Title">Compose Message</div>
+
+					<div class="P-PopUp-Content-Inner-Email">
+						<div class="input-title">Subject <span class="txtred">*</span></div>
+						<div class="P-Input-Full-Width">
+							<div class="P-Input-Inner-Wrapper">
+								<div class="P-Input-Holder">
+									<div class="P-Input-Middle">
+										<input id="email_subject" type="text" value="" name="inputname">
+									</div>
+									<div class="P-Clear"></div>
+								</div>
+							</div>
+						</div>
+						<div class="P-Clear"></div>
+						<div class="P-VSpace-10"></div>
+						<div class="P-Clear"></div>
+						<div class="input-title">Recipients <span class="txtred">*</span></div>
+						<div class="P-Input-Full-Width">
+							<div class="P-Input-Inner-Wrapper">
+								<div class="P-Input-Holder">
+									<ul class="token-input-list-facebook"><li class="token-input-input-token-facebook"><input type="text" autocomplete="off" placeholder="" id="token-input-email_recipients" style="outline: none;"><tester style="position: absolute; top: -9999px; left: -9999px; width: auto; font-size: 12px; font-family: Arial; font-weight: 400; letter-spacing: normal; white-space: nowrap;"></tester></li></ul><input type="text" id="email_recipients" value="" name="inputname1" style="display: none;">
+									<script type="text/javascript">
+										//<![CDATA[
+										$(document).ready(function () {
+											$("#email_recipients").tokenInput(gAutocompleteAjaxSrv + "?action=get_email_recipients",
+												{
+													minChars: 3,
+													theme: "facebook",
+													preventDuplicates: true,
+													queryParam: "term",
+													onResult: function(data){
+														return data;
+													},
+													onAdd: function(item){
+														$("#" + item.id).attr("checked", true);
+														var input = '<input class="email_recipients" id="email_recipients' + item.id + '_hiddenInp" name="email_recipients[]" value="' + item.id + '" type="hidden"/>';
+														$(input).insertBefore( "#email_recipients" );
+													},
+													onDelete: function(item){
+														$("#email_recipients" + item.id + "_hiddenInp").remove();
+														$("#" + item.id).attr("checked", false);
+													}
+												}
+											);
+										});
+										//]]>
+									</script>
+									<div class="P-Clear"></div>
+								</div>
+							</div>
+						</div>
+						<div class="P-Clear"></div>
+						<div class="P-VSpace-10"></div>
+						<div class="P-Clear"></div>
+						<div class="P-Data-Resources-Control-Txt">
+							<div class="P-Data-Resources-Control-Left">
+								Message <span class="txtred">*</span>
+							</div>
+						</div>
+						<div class="P-Control-Textarea-Holder">
+							<textarea id="email_content_textarea" rows="10" cols="80" style="visibility: hidden; display: none;"></textarea><div id="cke_email_content_textarea" class="cke_1 cke cke_reset cke_chrome cke_editor_email_content_textarea cke_ltr cke_browser_webkit" dir="ltr" lang="en" role="application"><div class="cke_inner cke_reset" role="presentation"><span id="cke_1_top" class="cke_top cke_reset_all" role="presentation" style="height: auto; user-select: none;"><span id="cke_7" class="cke_voice_label">Editor toolbars</span><span id="cke_1_toolbox" class="cke_toolbox" role="group" aria-labelledby="cke_7" onmousedown="return false;"><span id="cke_8" class="cke_toolbar" aria-labelledby="cke_8_label" role="toolbar"><span id="cke_8_label" class="cke_voice_label">Basic Styles</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_9" class="cke_button cke_button__bold cke_button_off" href="javascript:void(&#39;Bold&#39;)" title="Bold (Ctrl+B)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_9_label" aria-describedby="cke_9_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(0,event);" onfocus="return CKEDITOR.tools.callFunction(1,event);" onclick="CKEDITOR.tools.callFunction(2,this);return false;"><span class="cke_button_icon cke_button__bold_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -24px;background-size:auto;">&nbsp;</span><span id="cke_9_label" class="cke_button_label cke_button__bold_label" aria-hidden="false">Bold</span><span id="cke_9_description" class="cke_button_label" aria-hidden="false">Keyboard shortcut Ctrl+B</span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_10" class="cke_button cke_button__italic cke_button_off" href="javascript:void(&#39;Italic&#39;)" title="Italic (Ctrl+I)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_10_label" aria-describedby="cke_10_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(3,event);" onfocus="return CKEDITOR.tools.callFunction(4,event);" onclick="CKEDITOR.tools.callFunction(5,this);return false;"><span class="cke_button_icon cke_button__italic_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -48px;background-size:auto;">&nbsp;</span><span id="cke_10_label" class="cke_button_label cke_button__italic_label" aria-hidden="false">Italic</span><span id="cke_10_description" class="cke_button_label" aria-hidden="false">Keyboard shortcut Ctrl+I</span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_11" class="cke_button cke_button__underline cke_button_off" href="javascript:void(&#39;Underline&#39;)" title="Underline (Ctrl+U)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_11_label" aria-describedby="cke_11_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(6,event);" onfocus="return CKEDITOR.tools.callFunction(7,event);" onclick="CKEDITOR.tools.callFunction(8,this);return false;"><span class="cke_button_icon cke_button__underline_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -144px;background-size:auto;">&nbsp;</span><span id="cke_11_label" class="cke_button_label cke_button__underline_label" aria-hidden="false">Underline</span><span id="cke_11_description" class="cke_button_label" aria-hidden="false">Keyboard shortcut Ctrl+U</span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_12" class="cke_button cke_button__subscript cke_button_off" href="javascript:void(&#39;Subscript&#39;)" title="Subscript" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_12_label" aria-describedby="cke_12_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(9,event);" onfocus="return CKEDITOR.tools.callFunction(10,event);" onclick="CKEDITOR.tools.callFunction(11,this);return false;"><span class="cke_button_icon cke_button__subscript_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -96px;background-size:auto;">&nbsp;</span><span id="cke_12_label" class="cke_button_label cke_button__subscript_label" aria-hidden="false">Subscript</span><span id="cke_12_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_13" class="cke_button cke_button__superscript cke_button_off" href="javascript:void(&#39;Superscript&#39;)" title="Superscript" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_13_label" aria-describedby="cke_13_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(12,event);" onfocus="return CKEDITOR.tools.callFunction(13,event);" onclick="CKEDITOR.tools.callFunction(14,this);return false;"><span class="cke_button_icon cke_button__superscript_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -120px;background-size:auto;">&nbsp;</span><span id="cke_13_label" class="cke_button_label cke_button__superscript_label" aria-hidden="false">Superscript</span><span id="cke_13_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_14" class="cke_button cke_button__numberedlist cke_button_off" href="javascript:void(&#39;Insert/Remove Numbered List&#39;)" title="Insert/Remove Numbered List" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_14_label" aria-describedby="cke_14_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(15,event);" onfocus="return CKEDITOR.tools.callFunction(16,event);" onclick="CKEDITOR.tools.callFunction(17,this);return false;"><span class="cke_button_icon cke_button__numberedlist_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -432px;background-size:auto;">&nbsp;</span><span id="cke_14_label" class="cke_button_label cke_button__numberedlist_label" aria-hidden="false">Insert/Remove Numbered List</span><span id="cke_14_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_15" class="cke_button cke_button__bulletedlist cke_button_off" href="javascript:void(&#39;Insert/Remove Bulleted List&#39;)" title="Insert/Remove Bulleted List" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_15_label" aria-describedby="cke_15_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(18,event);" onfocus="return CKEDITOR.tools.callFunction(19,event);" onclick="CKEDITOR.tools.callFunction(20,this);return false;"><span class="cke_button_icon cke_button__bulletedlist_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -384px;background-size:auto;">&nbsp;</span><span id="cke_15_label" class="cke_button_label cke_button__bulletedlist_label" aria-hidden="false">Insert/Remove Bulleted List</span><span id="cke_15_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_16" class="cke_button cke_button__specialchar cke_button_off" href="javascript:void(&#39;Insert Special Character&#39;)" title="Insert Special Character" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_16_label" aria-describedby="cke_16_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(21,event);" onfocus="return CKEDITOR.tools.callFunction(22,event);" onclick="CKEDITOR.tools.callFunction(23,this);return false;"><span class="cke_button_icon cke_button__specialchar_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/specialchar/icons/specialchar.png?t=1526387487&#39;);background-position:0 0px;background-size:16px;">&nbsp;</span><span id="cke_16_label" class="cke_button_label cke_button__specialchar_label" aria-hidden="false">Insert Special Character</span><span id="cke_16_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_17" class="cke_button cke_button__link cke_button_off" href="javascript:void(&#39;Link&#39;)" title="Link (Ctrl+L)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_17_label" aria-describedby="cke_17_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(24,event);" onfocus="return CKEDITOR.tools.callFunction(25,event);" onclick="CKEDITOR.tools.callFunction(26,this);return false;"><span class="cke_button_icon cke_button__link_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -312px;background-size:auto;">&nbsp;</span><span id="cke_17_label" class="cke_button_label cke_button__link_label" aria-hidden="false">Link</span><span id="cke_17_description" class="cke_button_label" aria-hidden="false">Keyboard shortcut Ctrl+L</span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_18" class="cke_button cke_button__unlink cke_button_disabled " href="javascript:void(&#39;Unlink&#39;)" title="Unlink" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_18_label" aria-describedby="cke_18_description" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(27,event);" onfocus="return CKEDITOR.tools.callFunction(28,event);" onclick="CKEDITOR.tools.callFunction(29,this);return false;"><span class="cke_button_icon cke_button__unlink_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -336px;background-size:auto;">&nbsp;</span><span id="cke_18_label" class="cke_button_label cke_button__unlink_label" aria-hidden="false">Unlink</span><span id="cke_18_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_19" class="cke_button cke_button__outdent cke_button_disabled " href="javascript:void(&#39;Decrease Indent&#39;)" title="Decrease Indent" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_19_label" aria-describedby="cke_19_description" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(30,event);" onfocus="return CKEDITOR.tools.callFunction(31,event);" onclick="CKEDITOR.tools.callFunction(32,this);return false;"><span class="cke_button_icon cke_button__outdent_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -240px;background-size:auto;">&nbsp;</span><span id="cke_19_label" class="cke_button_label cke_button__outdent_label" aria-hidden="false">Decrease Indent</span><span id="cke_19_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_20" class="cke_button cke_button__indent cke_button_off" href="javascript:void(&#39;Increase Indent&#39;)" title="Increase Indent" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_20_label" aria-describedby="cke_20_description" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(33,event);" onfocus="return CKEDITOR.tools.callFunction(34,event);" onclick="CKEDITOR.tools.callFunction(35,this);return false;"><span class="cke_button_icon cke_button__indent_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -192px;background-size:auto;">&nbsp;</span><span id="cke_20_label" class="cke_button_label cke_button__indent_label" aria-hidden="false">Increase Indent</span><span id="cke_20_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_21" class="cke_button cke_button__scayt cke_button_off" href="javascript:void(&#39;Spell Check As You Type&#39;)" title="Spell Check As You Type" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_21_label" aria-describedby="cke_21_description" aria-haspopup="true" onkeydown="return CKEDITOR.tools.callFunction(36,event);" onfocus="return CKEDITOR.tools.callFunction(37,event);" onclick="CKEDITOR.tools.callFunction(38,this);return false;"><span class="cke_button_icon cke_button__scayt_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -480px;background-size:auto;">&nbsp;</span><span id="cke_21_label" class="cke_button_label cke_button__scayt_label" aria-hidden="false">Spell Check As You Type</span><span id="cke_21_description" class="cke_button_label" aria-hidden="false"></span><span class="cke_button_arrow"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_22" class="cke_button cke_button__undo cke_button_disabled " href="javascript:void(&#39;Undo&#39;)" title="Undo (Ctrl+Z)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_22_label" aria-describedby="cke_22_description" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(39,event);" onfocus="return CKEDITOR.tools.callFunction(40,event);" onclick="CKEDITOR.tools.callFunction(41,this);return false;"><span class="cke_button_icon cke_button__undo_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -624px;background-size:auto;">&nbsp;</span><span id="cke_22_label" class="cke_button_label cke_button__undo_label" aria-hidden="false">Undo</span><span id="cke_22_description" class="cke_button_label" aria-hidden="false">Keyboard shortcut Ctrl+Z</span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_23" class="cke_button cke_button__redo cke_button_disabled " href="javascript:void(&#39;Redo&#39;)" title="Redo (Ctrl+Y)" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_23_label" aria-describedby="cke_23_description" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(42,event);" onfocus="return CKEDITOR.tools.callFunction(43,event);" onclick="CKEDITOR.tools.callFunction(44,this);return false;"><span class="cke_button_icon cke_button__redo_icon" style="background-image:url(&#39;https://arpha.pensoft.net/lib/editors/ckeditor_4.4/plugins/icons.png?t=H7HD&#39;);background-position:0 -576px;background-size:auto;">&nbsp;</span><span id="cke_23_label" class="cke_button_label cke_button__redo_label" aria-hidden="false">Redo</span><span id="cke_23_description" class="cke_button_label" aria-hidden="false">Keyboard shortcut Ctrl+Y</span></a></span><span class="cke_toolbar_end"></span></span></span></span><div id="cke_1_contents" class="cke_contents cke_reset" role="presentation" style="height: 220px;"><iframe src="./template_files/saved_resource.html" frameborder="0" class="cke_wysiwyg_frame cke_reset" tabindex="0" allowtransparency="true" style="width: 100%; height: 100%;"></iframe></div></div></div>
+						</div>
+						<script type="text/javascript">
+			//<![CDATA[
+		CKEDITOR.config.contentsCss = '/lib/css/editor_iframe.css?v=1491403596' ;
+		CKEDITOR.config.language = 'en';
+        CKEDITOR.timestamp = '1526387487';
+		CKEDITOR.on('instanceReady', function(ev){
+			ev.editor.on('paste', function(evt) {
+				if(typeof(evt.data["html"]) !== 'undefined' && evt.data["html"] != null) {
+					// remove empty tags, e.g. <p></p>
+					evt.data["html"] = (evt.data["html"]).replace(/<[^\/>][^>]*><\/[^>]+>/, '');
+					evt.data["html"] = cleanHTML(evt.data["html"], 0);
+				}
+			}, null, null, 9);			
+			MarkCKEditorAsLoaded("email_content_textarea");
+		});
+
+		var instance = CKEDITOR.instances['email_content_textarea'];
+
+		if(instance){
+			//instance.destroy(true);
+		}
+		SaveCKEditorConfig('email_content_textarea', {
+			extraAllowedContent: {
+				
+				'insert' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'delete' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'accepted-insert' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'accepted-delete' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'fake-insert' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'fake-delete' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'fig-citation' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'copied-fig-citation' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'xref' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'tbls-citation' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+			    'copied-tbls-citation' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+			    'endnote-citation' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+			    'copied-endnote-citation' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'reference-citation' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'copied-reference-citation' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'cite' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'copied-cite' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'tn' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'tn-part' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'sup-files-citation' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'copied-sup-files-citation' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'mark' : {
+					attributes : '*',
+					classes : '*',
+					styles : '*'
+				},
+				'table' : {
+			     attributes : '*',
+			     classes : '*',
+			     styles : '*'
+			    },
+			    'tbody' : {
+
+			     attributes : '*',
+			     classes : '*',
+			     styles : '*'
+			    },
+			    'tr' : {
+			     attributes : '*',
+			     classes : '*',
+			     styles : '*'
+			    },				
+			    'th' : {
+			     attributes : '*',
+			     classes : '*',
+			     styles : '*'
+			    },
+			    'td' : {
+			     attributes : '*',
+			     classes : '*',
+			     styles : '*'
+			    }
+			},
+			extraPlugins : 'indentblock,undo,widget,lineutils,mathjax,justify,removeformat,clipboard,scayt,paste_custom,autosave,sharedspace,tableresize,tableselection,specialchar',
+			on: {
+				instanceReady: function( evt ) {
+					var leditor = evt.editor;
+					fixEditorMaximizeBtn(leditor);
+					SetupCKEditorIframeCitationElementsSelectionEvents(leditor);
+				}
+			},
+			toolbar : 'ModerateToolbar',
+			floatingtools : 'Basic',
+			removePlugins: 'elementspath,resize,colordialog,flash,find,form,iframe,image,pagebreak,preview,showblocks,smiley,templates,wsc',
+			height: 220,
+			autoGrow_minHeight: 220,
+			autoGrow_onStartup: true,
+			lite : {
+				isTracking : false,
+				tooltips : {
+					show : false
+				},				
+			},
+			autoGrow_maxHeight: 360 //fixed for popup editing
+			
+
+		});
+		ReloadCKEditor('email_content_textarea');
+		//]]>
+	</script>
+						<div class="P-Clear"></div>
+						<div class="P-VSpace-20"></div>
+						<div class="P-Clear"></div>
+						<div class="P-Green-Btn-Holder P-90" onclick="ajaxSendMessage(&#39;email_subject&#39;,&#39;email_recipients&#39;,&#39;email_content_textarea&#39;);" style="margin-top: 91px; left: 0">
+							
+							<div class="P-Green-Btn-Middle">Send</div>
+							
+						</div>
+						<div class="P-HSpace-10"></div>
+						<div class="P-Grey-Btn-Holder" onclick="popUp(POPUP_OPERS.close, &#39;compose-new-message&#39;, &#39;compose-new-message&#39;);" style="margin-top: 110px; left: 130px">
+							
+							<div class="P-Grey-Btn-Middle"><div class="P-Btn-Icon"></div>Close</div>
+							
+						</div>
+						<div class="P-Clear"></div>
+					</div>
+				</div>
+				<div class="P-Project-Participants">
+
+
+				</div>
+			</div>
+		</div>
+	
+				
+		<div style="display: none;" class="P-PopUp P-Email-PopUp" id="review_popup">
+			<div class="P-PopUp-Main-Holder P-PopUp-Main-Holder-Review">
+			</div>
+		</div>
+	
+				
+		<div style="display: none;" class="P-PopUp P-Email-PopUp" id="te_feedback_popup">
+			<div class="P-PopUp-Main-Holder P-PopUp-Main-Holder-Review">
+			</div>
+		</div>
+	
+				
+		<div style="display: none;" id="P-General-Popup-Content" class="P-PopUp"></div>
+		<div style="display: none;" class="P-PopUp P-Email-PopUp" id="general_popup">
+			<div class="P-PopUp-Main-Holder"></div>
+		</div>
+	
+				
+		<div style="display: none;width:600px;" class="P-PopUp P-Email-PopUp" id="error_popup">
+			<div class="P-PopUp-Main-Holder"></div>
+		</div>
+	
+				<div id="layerbg" style="display: none;"></div>
+				<script type="text/javascript">
+					resizeMiddleContainer();
+					autoSaveField();
+				</script>
+				<script type="text/javascript">
+				/* Google Analytics */
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-34109634-1']);
+				_gaq.push(['_trackPageview']);
+				(function() {
+					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+				
+	  <!-- Default Statcounter code for PWT  -->
+		<script type="text/javascript">
+		var sc_project=9253683; 
+		var sc_invisible=1; 
+		var sc_security="70e13945"; 
+		</script>
+		<script type="text/javascript" src="./template_files/counter.js.download" async=""></script>
+		<noscript><div class="statcounter"><a title="Web Analytics
+		Made Easy - StatCounter" href="https://statcounter.com/"
+		target="_blank"><img class="statcounter"
+		src="https://c.statcounter.com/9253683/0/70e13945/1/"
+		alt="Web Analytics Made Easy -
+		StatCounter"></a></div></noscript>
+		<!-- End of Statcounter Code -->
+        
+			
+		
+	
+		
+		<script type="text/javascript">
+			if( document.cookie.indexOf("WarningCookie") ===-1){
+				$("#warningCookie").show();
+			}else{
+				$("#warningCookie").remove();
+				sessionStorage.removeItem("WarningCookieSession");
+			}
+			
+			if(sessionStorage.getItem("WarningCookieSession") == "YES"){
+				$("#warningCookie").remove();
+			}
+			
+			$("#removeWarningCookie").click(function () {
+				SetCookie('WarningCookie','OK',365) /* expires in 365 days*/
+				$("#warningCookie").remove();
+				sessionStorage.removeItem("WarningCookieSession");
+			});
+			
+			$("#closeWarningCookie").click(function () {
+				sessionStorage.setItem("WarningCookieSession", "YES");
+				$("#warningCookie").remove();
+			});
+		</script>
+
+	
+	<div class="token-input-dropdown-facebook" style="display: none;"></div></body></html>
